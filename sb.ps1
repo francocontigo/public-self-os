@@ -19,7 +19,7 @@
 param(
     [Parameter(Mandatory = $true, Position = 0)]
     [ValidateSet('ingest', 'process-inbox', 'query', 'lint', 'capture', 'study', 'explain', 'gaps', 'help',
-                 'status', 'diagnostico', 'trilha', 'dia', 'semana', 'ideias', 'post', 'decisao', 'tese', 'projeto')]
+                 'status', 'diagnostico', 'trilha', 'dia', 'semana', 'ideias', 'post', 'decisao', 'brag', 'tese', 'projeto')]
     [string]$Command,
 
     [Parameter(Position = 1, ValueFromRemainingArguments = $true)]
@@ -69,6 +69,10 @@ switch ($Command) {
         if (-not $Arg) { throw 'Usage: ./sb.ps1 decisao <frente>' }
         & $Claude "/decisao $Arg" @Perm
     }
+    'brag'        {
+        if (-not $Arg) { throw 'Usage: ./sb.ps1 brag add <texto>|colher|revisar <periodo>|listar' }
+        & $Claude "/brag $Arg" @Perm
+    }
     'tese'        { & $Claude "/tese $Arg" @Perm }
     'projeto'     { & $Claude "/projeto $Arg" @Perm }
     # Headless.
@@ -97,6 +101,7 @@ switch ($Command) {
         Write-Host '  ./sb.ps1 ideias [N]             Post ideas -> areas/publico/ideias.md'
         Write-Host '  ./sb.ps1 post "<tema> [x|linkedin|medium]"  Draft a post -> areas/publico/posts/'
         Write-Host '  ./sb.ps1 decisao <frente>       Record a work decision (interactive)'
+        Write-Host '  ./sb.ps1 brag <colher|add ...>  Brag document: harvest, add, review (interactive)'
         Write-Host '  ./sb.ps1 tese nova "<enunciado>" Theses: nova|revisar|desafiar|listar (interactive)'
         Write-Host '  ./sb.ps1 projeto novo "<nome>"  Public projects: novo|continuar|publicar|listar (interactive)'
     }

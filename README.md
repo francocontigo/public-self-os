@@ -58,6 +58,8 @@ Para ver o estado sem abrir o agente: `make status` ou `./sb.ps1 status`.
 
 Sexta ou domingo, **`/semana`** (30 min). Abre pela produção pública do mês, pergunta quatro coisas, escreve `journal/semanas/<semana>.md`, define três focos para a semana seguinte (pelo menos um de produção pública) e gera três ideias de post.
 
+Na mesma sessão, `/brag colher` puxa o que você fechou no GitHub (e no Linear, se conectado) para `areas/trabalho/brag.md`, com impacto e link. É o que a avaliação de desempenho vai ler.
+
 Quando a semana apontar evidência nova para uma tese: `/tese revisar <slug>`. Quando quiser ser contestado: `/tese desafiar <slug>`.
 
 A cada trimestre: `/diagnostico` para refazer o gap-map.
@@ -79,6 +81,7 @@ Dentro da sessão `claude`:
 | `/ideias [n]` | ideias de post a partir das teses, projetos e do que foi aprendido |
 | `/post <tema> [x\|linkedin\|medium]` · `publicado <slug> <url>` · `resultado <slug>` | rascunha, registra, mede posts |
 | `/decisao <frente>` | registra decisão de trabalho |
+| `/brag add <texto>` · `colher [desde data]` · `revisar <período>` · `listar` | brag document do trabalho: colhe PRs e issues fechadas (GitHub, Linear se conectado), monta o resumo para avaliação |
 | `/diagnostico` | entrevista que refaz o gap-map |
 | `/ingest <arquivo ou URL>` | ingere uma fonte na wiki e gera cards |
 | `/process-inbox` | drena `raw/inbox.md` para a wiki e para as áreas |
@@ -87,7 +90,7 @@ Dentro da sessão `claude`:
 | `/gaps` | plano de estudo ordenado pelo gap-map, em `output/study-plan.md` |
 | `/lint` | saúde estrutural da wiki |
 
-Fora da sessão (macOS e Linux com `make`, Windows com `./sb.ps1`), mesmos verbos: `status`, `dia`, `semana`, `study`, `trilha A="..."`, `projeto A="..."`, `tese A="..."`, `ideias`, `post A="..."`, `decisao A="..."`, `diagnostico`, `ingest SRC=...`, `process-inbox`, `query Q=...`, `lint`, `gaps`, `capture TEXT=...`. `make help` lista tudo.
+Fora da sessão (macOS e Linux com `make`, Windows com `./sb.ps1`), mesmos verbos: `status`, `dia`, `semana`, `study`, `trilha A="..."`, `projeto A="..."`, `tese A="..."`, `ideias`, `post A="..."`, `decisao A="..."`, `brag A="..."`, `diagnostico`, `ingest SRC=...`, `process-inbox`, `query Q=...`, `lint`, `gaps`, `capture TEXT=...`. `make help` lista tudo.
 
 `python scripts/os_status.py --human` imprime o estado determinístico (produção pública, cards, trilhas, posts, teses, projetos, inbox) sem LLM. As skills usam ele em vez de reler os arquivos. `python scripts/test_os_status.py` roda os testes.
 

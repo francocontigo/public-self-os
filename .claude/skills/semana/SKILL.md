@@ -24,6 +24,7 @@ Crie `journal/semanas/<week>.md` a partir de `templates/semana.md`. A seção `#
 
 Depois:
 - `## O que aconteceu` por área (estudos, projetos, público, teses, trabalho, pessoal, rede).
+- Trabalho: o que foi entregue na semana e vale no brag document vai para `areas/trabalho/brag.md`, uma linha por item no formato de `/brag add`, com impacto. Sugira `/brag colher` se a última colheita tem mais de duas semanas.
 - Teses que ganharam ou perderam evidência na semana (sugira `/tese revisar <slug>`).
 - `## Aprendizados para a wiki`: cada item vira também uma linha em `raw/inbox.md` para o `/process-inbox`.
 - `## Gap-map`: mudanças propostas. **Pergunte antes de alterar níveis.**

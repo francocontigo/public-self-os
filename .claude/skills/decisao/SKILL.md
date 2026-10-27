@@ -1,6 +1,6 @@
 ---
 name: decisao
-description: Registra uma decisão ou aprendizado de trabalho em areas/trabalho/frentes/<frente>.md. Use quando o usuário tomar ou quiser documentar uma decisão no sua frente de trabalho, na atribuição, no pricing ou em outra frente da empresa.
+description: Registra uma decisão ou aprendizado de trabalho em areas/trabalho/frentes/<frente>.md. Use quando o usuário tomar ou quiser documentar uma decisão em uma frente de trabalho.
 argument-hint: <frente> (<frente existente> | nova)
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash(date:*)
 ---

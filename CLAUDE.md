@@ -81,7 +81,8 @@ will publish, work decisions, personal goals, and the chronology of all of it.
 - `areas/publico/`   estrategia.md, voz.md, ideias.md (post backlog) and posts/<date>-<slug>.md.
 - `areas/rede/`      mapa.md: people with a public presence the user wants to debate, learn from or work with.
                      Name + public handle + why + public interactions only. Nothing private about anyone.
-- `areas/trabalho/`  frentes/<front>.md (decisions and learnings per work front) and aprendizados.md.
+- `areas/trabalho/`  frentes/<front>.md (decisions and learnings per work front), aprendizados.md and
+                     brag.md (what shipped at work, with impact and evidence; fed by /brag from GitHub, Linear or pasted lists).
 - `areas/pessoal/`   metas.md and habitos.md.
 - `journal/`         one note per day (YYYY-MM-DD.md) and one per week (semanas/YYYY-Www.md).
 
@@ -121,6 +122,7 @@ Skills (operational layer, in `.claude/skills/`; interactive ones ask one questi
 - `/ideias [n]` — post ideas from theses, projects and recent learning → `areas/publico/ideias.md` backlog.
 - `/post <topic> [x|linkedin|medium] | publicado <slug> <url> | resultado <slug>` — drafts, tracks and closes posts in `areas/publico/posts/`. The agent never publishes.
 - `/decisao <frente>` — records a work decision in `areas/trabalho/frentes/<frente>.md` (LGPD: roles, never personal data).
+- `/brag add|colher|revisar|listar` — brag document in `areas/trabalho/brag.md`: harvests merged PRs and closed issues (`gh`, Linear if connected), writes the review summary to `output/`.
 - `/tese nova|revisar|desafiar|listar` — public positions in `areas/teses/`: argument, evidence, what would change the user's mind.
 - `/projeto novo|continuar|publicar|listar` — public projects in `areas/projetos/`, the strongest form of public output.
 - `python scripts/os_status.py [--human]` — deterministic state (no LLM): public output, due cards, tracks, posts, theses, projects, journal, inbox.

@@ -10,7 +10,7 @@ CLAUDE ?= claude
 PERM   ?= --permission-mode acceptEdits
 
 .PHONY: help ingest process-inbox query lint capture study gaps explain \
-        status diagnostico trilha dia semana ideias post decisao tese projeto
+        status diagnostico trilha dia semana ideias post decisao brag tese projeto
 
 help:
 	@echo "Second Brain commands:"
@@ -32,6 +32,7 @@ help:
 	@echo "  make ideias [N=5]                Post ideas -> areas/publico/ideias.md"
 	@echo "  make post A=\"<tema> [x|linkedin|medium]\"  Draft a post -> areas/publico/posts/"
 	@echo "  make decisao A=\"<frente>\"        Record a work decision (interactive)"
+	@echo "  make brag A=\"colher|add ...\"      Brag document: harvest, add, review (interactive)"
 	@echo "  make tese A=\"nova <enunciado>\"   Theses: nova|revisar|desafiar|listar (interactive)"
 	@echo "  make projeto A=\"novo <nome>\"     Public projects: novo|continuar|publicar|listar (interactive)"
 
@@ -88,6 +89,10 @@ semana:
 decisao:
 	@test -n "$(A)" || (echo "Usage: make decisao A=\"<frente>\"" && exit 1)
 	$(CLAUDE) "/decisao $(A)" $(PERM)
+
+brag:
+	@test -n "$(A)" || (echo "Usage: make brag A=\"add <texto>|colher|revisar <periodo>|listar\"" && exit 1)
+	$(CLAUDE) "/brag $(A)" $(PERM)
 
 tese:
 	$(CLAUDE) "/tese $(A)" $(PERM)
