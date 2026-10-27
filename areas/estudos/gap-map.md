@@ -4,19 +4,13 @@ status: vazio
 ---
 # Gap-map
 
-Nível do usuário por domínio de IA. Preenchido por `/diagnostico`, atualizado por `/trilha fechar` e `/semana`. Níveis: `ausente`, `superficial`, `funcional`, `forte`. Prioridade pesa o objetivo de referência pública: domínios onde ele vai falar em público valem mais.
+Nível do usuário por domínio do campo dele. Domínios definidos por `/entrevista`, níveis preenchidos por `/diagnostico`, atualizado por `/trilha fechar` e `/semana`. Níveis: `ausente`, `superficial`, `funcional`, `forte`. Prioridade pesa o objetivo de referência pública: domínios onde ele vai falar em público valem mais.
+
+## Domínios
+Definidos por `/entrevista`: lista numerada, nome curto e subtemas entre parênteses. O `/diagnostico` lê daqui.
 
 | Domínio | Nível | Evidência | Prioridade | Trilha |
 |---|---|---|---|---|
-| Fundamentos de ML e otimização | | | | |
-| Transformers e pré-treino | | | | |
-| Pós-treino e RL | | | | |
-| Avaliação e evals | | | | |
-| Busca, retrieval e representação | | | | |
-| Inferência, infra e custo | | | | |
-| Agentes e sistemas | | | | |
-| Mercado, estratégia e história | | | | |
-| Comunicação pública e ensino | | | | |
 
 ## Inbox
 Itens `@estudo` vindos do `/process-inbox`, ainda sem trilha.

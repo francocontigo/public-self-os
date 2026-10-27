@@ -28,13 +28,15 @@ claude
 
 Dentro da sessão, nesta ordem. Cada skill pergunta uma coisa por vez.
 
-1. **Estratégia e voz.** Abra `areas/publico/estrategia.md` e `areas/publico/voz.md` com o agente e preencha: posicionamento, arquétipo, plataformas, pilares, regras de escrita. Marque `status: confirmada`. Todo post é checado contra `voz.md`.
-2. **Frentes de trabalho e metas.** `/decisao nova` para cada frente do seu trabalho atual, criando `areas/trabalho/frentes/<frente>.md` com o contexto. Depois, `areas/pessoal/metas.md` com as metas do trimestre. O diagnóstico, as sessões aplicadas das trilhas e o `/dia` leem esses arquivos. Regra de `areas/trabalho/`: decisões e raciocínios, nunca dados pessoais de clientes ou funcionários. Pessoas aparecem pelo papel.
-3. **`/tese nova <enunciado>`** para duas ou três posições que você defende. Posts e projetos nascem das teses, não só do que foi estudado.
-4. **`/diagnostico`** (40 min). Entrevista sobre nove domínios de IA. Escreve `areas/estudos/gap-map.md` com nível e prioridade por domínio e propõe as duas primeiras trilhas. Vem depois da estratégia, das frentes e das teses porque as perguntas de aplicação usam as frentes e a prioridade de cada domínio pesa onde você vai falar em público.
-5. **`/trilha nova <tema>`** para as trilhas propostas no diagnóstico. Cada trilha tem um artefato de saída (projeto, artigo ou post), fontes e um mapa de conceitos. Se o artefato for projeto, a skill já cria `areas/projetos/<slug>.md`.
+1. **`/entrevista`** (30 min). O sistema não assume campo nenhum. Pergunta o que você faz, suas frentes de trabalho, pelo que quer ser reconhecido e por quem, onde publica, quem você admira escrevendo, metas do trimestre. Propõe sete a nove domínios do seu campo e, confirmados, escreve `estrategia.md`, `voz.md`, as frentes em `areas/trabalho/frentes/`, `metas.md` e a lista de domínios em `areas/estudos/gap-map.md`.
+2. **Confirmar estratégia e voz.** Leia `areas/publico/estrategia.md` e `areas/publico/voz.md`, ajuste o que saiu errado e marque `status: confirmada`. Todo post é checado contra `voz.md`.
+3. **`/tese nova <enunciado>`** para duas ou três posições que você já defende. Posts e projetos nascem das teses, não só do que foi estudado.
+4. **`/diagnostico`** (40 min). Duas a três perguntas por domínio da lista. Preenche nível, evidência e prioridade no gap-map e propõe as duas primeiras trilhas. Vem depois da estratégia e das teses porque a prioridade de cada domínio pesa onde você vai falar em público.
+5. **`/trilha nova <tema>`** para as trilhas propostas. Cada trilha tem um artefato de saída (projeto, artigo ou post), fontes e um mapa de conceitos. Se o artefato for projeto, a skill já cria `areas/projetos/<slug>.md`.
 6. **`/ingest <arquivo ou URL>`** nas primeiras fontes das trilhas. Cada ingest cria páginas na wiki e cards de recall.
 7. **`/dia`** no dia seguinte. A partir daí vale a rotina abaixo.
+
+Regra de `areas/trabalho/`: decisões e raciocínios, nunca dados pessoais de clientes ou funcionários. Pessoas aparecem pelo papel.
 
 Se o repositório for ficar no GitHub, torne-o privado antes de preencher `areas/pessoal/`, `areas/trabalho/` e `areas/rede/`.
 
@@ -82,7 +84,8 @@ Dentro da sessão `claude`:
 | `/post <tema> [x\|linkedin\|medium]` · `publicado <slug> <url>` · `resultado <slug>` | rascunha, registra, mede posts |
 | `/decisao <frente>` | registra decisão de trabalho |
 | `/brag add <texto>` · `colher [desde data]` · `revisar <período>` · `listar` | brag document do trabalho: colhe PRs e issues fechadas (GitHub, Linear se conectado), monta o resumo para avaliação |
-| `/diagnostico` | entrevista que refaz o gap-map |
+| `/entrevista` | primeira conversa: campo, frentes, objetivo público, metas, domínios do gap-map |
+| `/diagnostico` | entrevista que preenche o gap-map, domínio por domínio |
 | `/ingest <arquivo ou URL>` | ingere uma fonte na wiki e gera cards |
 | `/process-inbox` | drena `raw/inbox.md` para a wiki e para as áreas |
 | `/query <pergunta>` | responde a partir da wiki, salva em `output/` |
@@ -90,7 +93,7 @@ Dentro da sessão `claude`:
 | `/gaps` | plano de estudo ordenado pelo gap-map, em `output/study-plan.md` |
 | `/lint` | saúde estrutural da wiki |
 
-Fora da sessão (macOS e Linux com `make`, Windows com `./sb.ps1`), mesmos verbos: `status`, `dia`, `semana`, `study`, `trilha A="..."`, `projeto A="..."`, `tese A="..."`, `ideias`, `post A="..."`, `decisao A="..."`, `brag A="..."`, `diagnostico`, `ingest SRC=...`, `process-inbox`, `query Q=...`, `lint`, `gaps`, `capture TEXT=...`. `make help` lista tudo.
+Fora da sessão (macOS e Linux com `make`, Windows com `./sb.ps1`), mesmos verbos: `status`, `dia`, `semana`, `study`, `trilha A="..."`, `projeto A="..."`, `tese A="..."`, `ideias`, `post A="..."`, `decisao A="..."`, `brag A="..."`, `entrevista`, `diagnostico`, `ingest SRC=...`, `process-inbox`, `query Q=...`, `lint`, `gaps`, `capture TEXT=...`. `make help` lista tudo.
 
 `python scripts/os_status.py --human` imprime o estado determinístico (produção pública, cards, trilhas, posts, teses, projetos, inbox) sem LLM. As skills usam ele em vez de reler os arquivos. `python scripts/test_os_status.py` roda os testes.
 

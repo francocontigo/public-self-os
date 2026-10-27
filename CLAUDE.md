@@ -115,7 +115,8 @@ today's date). Skills call it instead of recomputing by reading files.
 - `/explain <concept>` — Feynman mode: user explains, the agent grades and patches gaps, may add recall cards.
 
 Skills (operational layer, in `.claude/skills/`; interactive ones ask one question at a time):
-- `/diagnostico` — diagnostic interview over nine AI domains → writes `areas/estudos/gap-map.md`. First run and quarterly.
+- `/entrevista` — first conversation: field, role, work fronts, public goal, goals → writes estrategia.md, voz.md, frentes/, metas.md and the domain list in `areas/estudos/gap-map.md`. Run once, before everything.
+- `/diagnostico` — diagnostic interview over the domains listed in `areas/estudos/gap-map.md` → fills levels and priorities. After /entrevista, then quarterly.
 - `/trilha nova|continuar|listar|fechar` — study tracks in `areas/estudos/trilhas/`: motivation, scope, sources, sessions, output artifact.
 - `/dia` — opens the day: reads state, writes `journal/<today>.md` with a plan of at most three items.
 - `/semana` — weekly review across all areas → `journal/semanas/<week>.md`; opens with public output, sets next week's focus.

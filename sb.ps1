@@ -19,7 +19,7 @@
 param(
     [Parameter(Mandatory = $true, Position = 0)]
     [ValidateSet('ingest', 'process-inbox', 'query', 'lint', 'capture', 'study', 'explain', 'gaps', 'help',
-                 'status', 'diagnostico', 'trilha', 'dia', 'semana', 'ideias', 'post', 'decisao', 'brag', 'tese', 'projeto')]
+                 'status', 'entrevista', 'diagnostico', 'trilha', 'dia', 'semana', 'ideias', 'post', 'decisao', 'brag', 'tese', 'projeto')]
     [string]$Command,
 
     [Parameter(Position = 1, ValueFromRemainingArguments = $true)]
@@ -61,6 +61,7 @@ switch ($Command) {
     # ---- personal OS (areas/ + journal/) ----
     'status'      { python scripts/os_status.py --human }
     # Interactive skills (live session, one question at a time).
+    'entrevista'  { & $Claude '/entrevista' @Perm }
     'diagnostico' { & $Claude '/diagnostico' @Perm }
     'trilha'      { & $Claude "/trilha $Arg" @Perm }
     'dia'         { & $Claude '/dia' @Perm }
@@ -94,6 +95,7 @@ switch ($Command) {
         Write-Host '  ./sb.ps1 gaps                   Learning health check -> output/study-plan.md'
         Write-Host '  -- personal OS --'
         Write-Host '  ./sb.ps1 status                 System state (python scripts/os_status.py --human, no LLM)'
+        Write-Host '  ./sb.ps1 entrevista             First conversation: field, fronts, goals, domains (interactive)'
         Write-Host '  ./sb.ps1 diagnostico            Diagnostic interview -> areas/estudos/gap-map.md (interactive)'
         Write-Host '  ./sb.ps1 trilha nova "<tema>"   Study tracks: nova|continuar|listar|fechar (interactive)'
         Write-Host '  ./sb.ps1 dia                    Open the day -> journal/<today>.md (interactive)'

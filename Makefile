@@ -10,7 +10,7 @@ CLAUDE ?= claude
 PERM   ?= --permission-mode acceptEdits
 
 .PHONY: help ingest process-inbox query lint capture study gaps explain \
-        status diagnostico trilha dia semana ideias post decisao brag tese projeto
+        status entrevista diagnostico trilha dia semana ideias post decisao brag tese projeto
 
 help:
 	@echo "Second Brain commands:"
@@ -25,6 +25,7 @@ help:
 	@echo "  make gaps                        Learning health check -> output/study-plan.md"
 	@echo "  -- personal OS --"
 	@echo "  make status                      System state (python scripts/os_status.py --human, no LLM)"
+	@echo "  make entrevista                  First conversation: field, fronts, goals, domains (interactive)"
 	@echo "  make diagnostico                 Diagnostic interview -> areas/estudos/gap-map.md (interactive)"
 	@echo "  make trilha A=\"nova <tema>\"      Study tracks: nova|continuar|listar|fechar (interactive)"
 	@echo "  make dia                         Open the day -> journal/<today>.md (interactive)"
@@ -74,6 +75,9 @@ status:
 	python scripts/os_status.py --human
 
 # Interactive skills (live session, they ask one question at a time).
+entrevista:
+	$(CLAUDE) "/entrevista" $(PERM)
+
 diagnostico:
 	$(CLAUDE) "/diagnostico" $(PERM)
 
