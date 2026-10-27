@@ -28,9 +28,9 @@ claude
 
 Dentro da sessão, nesta ordem. Cada skill pergunta uma coisa por vez.
 
-1. **`/diagnostico`** (40 min). Entrevista sobre nove domínios de IA. Escreve `areas/estudos/gap-map.md` com nível e prioridade por domínio e propõe as duas primeiras trilhas.
-2. **Estratégia e voz.** Abra `areas/publico/estrategia.md` e `areas/publico/voz.md` com o agente e preencha: posicionamento, arquétipo, plataformas, pilares, regras de escrita. Marque `status: confirmada`. Todo post é checado contra `voz.md`.
-3. **`/tese nova <enunciado>`** para duas ou três posições que você defende. Posts e projetos nascem das teses, não só do que foi estudado.
+1. **Estratégia e voz.** Abra `areas/publico/estrategia.md` e `areas/publico/voz.md` com o agente e preencha: posicionamento, arquétipo, plataformas, pilares, regras de escrita. Marque `status: confirmada`. Todo post é checado contra `voz.md`.
+2. **`/tese nova <enunciado>`** para duas ou três posições que você defende. Posts e projetos nascem das teses, não só do que foi estudado.
+3. **`/diagnostico`** (40 min). Entrevista sobre nove domínios de IA. Escreve `areas/estudos/gap-map.md` com nível e prioridade por domínio e propõe as duas primeiras trilhas. Vem depois da estratégia e das teses porque a prioridade de cada domínio pesa onde você vai falar em público.
 4. **`/trilha nova <tema>`** para as trilhas propostas no diagnóstico. Cada trilha tem um artefato de saída (projeto, artigo ou post), fontes e um mapa de conceitos.
 5. **`/projeto novo <nome>`** se alguma trilha apontou projeto público.
 6. **`/ingest <arquivo ou URL>`** nas primeiras fontes das trilhas. Cada ingest cria páginas na wiki e cards de recall.
