@@ -52,7 +52,8 @@ Abra um terminal na pasta do vault, digite `claude`, e rode:
    - `/trilha continuar <slug>` (1 a 2 h). Sessão de estudo, alternando teoria e aplicação.
    - `/projeto continuar <slug>` (1 a 2 h). Avança o projeto público e registra o próximo passo.
 4. **Um post** a partir do backlog com `/post <tema> x`. Você publica, o agente nunca publica. Depois: `/post publicado <slug> <url>`.
-5. Ao longo do dia, capture no `raw/inbox.md` com marcador de área: `@estudo`, `@post`, `@trabalho <frente>`, `@pessoal`, `@tese`, `@projeto <slug>`, `@rede`. Sem marcador vai para a wiki. `/process-inbox` drena.
+5. **`/dia fechar`** (2 min) no fim do dia. O que saiu, o que não saiu, uma linha para amanhã. É o que o `/dia` de amanhã e o `/semana` leem.
+6. Ao longo do dia, capture no `raw/inbox.md` com marcador de área: `@estudo`, `@post`, `@trabalho <frente>`, `@pessoal`, `@tese`, `@projeto <slug>`, `@rede`. Sem marcador vai para a wiki. `/process-inbox` drena.
 
 Para ver o estado sem abrir o agente: `make status` ou `./sb.ps1 status`.
 
@@ -74,14 +75,14 @@ Dentro da sessão `claude`:
 
 | Comando | Faz |
 |---|---|
-| `/dia` | abre o dia, escreve o diário com plano de até três itens |
+| `/dia` · `fechar` | abre o dia com plano de até três itens; fecha em dois minutos (saiu, não saiu, amanhã) |
 | `/semana` | revisão semanal, foco da próxima semana, ideias de post |
 | `/study [N]` | repetição espaçada dos cards vencidos |
 | `/trilha nova <tema>` · `continuar <slug>` · `listar` · `fechar <slug>` | trilhas de estudo com artefato de saída |
 | `/projeto novo <nome>` · `continuar <slug>` · `publicar <slug>` · `listar` | projetos públicos |
 | `/tese nova <enunciado>` · `revisar <slug>` · `desafiar <slug>` · `listar` | posições públicas |
 | `/ideias [n]` | ideias de post a partir das teses, projetos e do que foi aprendido |
-| `/post <tema> [x\|linkedin\|medium]` · `publicado <slug> <url>` · `resultado <slug>` | rascunha, registra, mede posts |
+| `/post <tema> [x\|linkedin\|medium\|substack]` · `publicado <slug> <url>` · `resultado <slug>` | rascunha, registra, mede posts |
 | `/decisao <frente>` | registra decisão de trabalho |
 | `/brag add <texto>` · `colher [desde data]` · `revisar <período>` · `listar` | brag document do trabalho: colhe PRs e issues fechadas (GitHub, Linear se conectado), monta o resumo para avaliação |
 | `/entrevista` | primeira conversa: campo, frentes, objetivo público, metas, domínios do gap-map |
@@ -91,7 +92,7 @@ Dentro da sessão `claude`:
 | `/query <pergunta>` | responde a partir da wiki, salva em `output/` |
 | `/explain <conceito>` | modo Feynman, você explica e o agente corrige |
 | `/gaps` | plano de estudo ordenado pelo gap-map, em `output/study-plan.md` |
-| `/lint` | saúde estrutural da wiki |
+| `/lint` | roda `scripts/lint.py` (links quebrados, órfãs, índice, fontes) e julga contradições |
 
 Fora da sessão (macOS e Linux com `make`, Windows com `./sb.ps1`), mesmos verbos: `status`, `dia`, `semana`, `study`, `trilha A="..."`, `projeto A="..."`, `tese A="..."`, `ideias`, `post A="..."`, `decisao A="..."`, `brag A="..."`, `entrevista`, `diagnostico`, `ingest SRC=...`, `process-inbox`, `query Q=...`, `lint`, `gaps`, `capture TEXT=...`. `make help` lista tudo.
 
@@ -115,7 +116,7 @@ areas/
   pessoal/        metas.md, habitos.md
 journal/          YYYY-MM-DD.md e semanas/YYYY-Www.md
 templates/        templates do Obsidian usados pelas skills
-scripts/          os_status.py e teste
+scripts/          os_status.py, lint.py e testes
 docs/             personal-os-spec.md
 .claude/          commands/ (wiki) e skills/ (camada operacional)
 ```

@@ -8,7 +8,7 @@ import json
 import re
 import sys
 from collections import Counter
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 DEFAULT_VAULT = Path(__file__).resolve().parent.parent
@@ -83,13 +83,15 @@ def review(vault):
     }
 
 
-def tracks(vault):
+def tracks(vault, today):
+    cutoff = (date.fromisoformat(today) - timedelta(days=7)).isoformat()
     return [
         {
             "slug": slug,
             "status": fm.get("status", ""),
             "scope": fm.get("scope", ""),
             "last_session": last_date(section(text, "Sessões")),
+            "sessions_7d": sum(1 for d in DATE_RE.findall(section(text, "Sessões")) if d > cutoff),
             "next_step": next_step(text),
         }
         for slug, fm, text in notes(vault, "areas/estudos/trilhas")
@@ -152,7 +154,7 @@ def producao_publica(vault, today):
         month = fm.get("published", "")[:7]
         if fm.get("status") != "publicado" or month not in out:
             continue
-        artigo = fm.get("kind") == "artigo" and fm.get("platform") in ("medium", "linkedin")
+        artigo = fm.get("kind") == "artigo"  # any platform: Medium, LinkedIn, Substack...
         out[month]["artigos" if artigo else "posts"] += 1
     return out
 
@@ -194,7 +196,7 @@ def collect(vault=DEFAULT_VAULT, today=None):
         "week": f"{iso[0]}-W{iso[1]:02d}",
         "producao_publica": producao_publica(vault, today),
         "review": review(vault),
-        "tracks": tracks(vault),
+        "tracks": tracks(vault, today),
         "posts": posts(vault),
         "teses": teses(vault),
         "projetos": projetos(vault),
@@ -215,7 +217,7 @@ def human(s):
     ]
     active = [t for t in s["tracks"] if t["status"] == "ativa"]
     lines.append("Trilhas ativas: " + (", ".join(
-        f"{t['slug']} ({t['scope'] or '?'}, última {t['last_session'] or '-'}, próximo: {t['next_step'] or '-'})"
+        f"{t['slug']} ({t['scope'] or '?'}, {t['sessions_7d']} sessões em 7 dias, última {t['last_session'] or '-'}, próximo: {t['next_step'] or '-'})"
         for t in active) or "nenhuma"))
     lines.append(f"Posts: {s['posts']['by_status'] or 'nenhum'}; abertos: "
                  + (", ".join(p['slug'] for p in s['posts']['open']) or "nenhum"))

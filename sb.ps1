@@ -43,7 +43,7 @@ switch ($Command) {
         if (-not $Arg) { throw 'Usage: ./sb.ps1 query "your question"' }
         & $Claude -p "/query $Arg" @Perm
     }
-    'lint' { & $Claude -p '/lint' @Perm }
+    'lint' { python scripts/lint.py }
     'capture' {
         if (-not $Arg) { throw 'Usage: ./sb.ps1 capture "a thought"' }
         $inbox = Join-Path $PSScriptRoot 'raw/inbox.md'
@@ -64,7 +64,7 @@ switch ($Command) {
     'entrevista'  { & $Claude '/entrevista' @Perm }
     'diagnostico' { & $Claude '/diagnostico' @Perm }
     'trilha'      { & $Claude "/trilha $Arg" @Perm }
-    'dia'         { & $Claude '/dia' @Perm }
+    'dia'         { & $Claude "/dia $Arg" @Perm }
     'semana'      { & $Claude '/semana' @Perm }
     'decisao' {
         if (-not $Arg) { throw 'Usage: ./sb.ps1 decisao <frente>' }
@@ -80,7 +80,7 @@ switch ($Command) {
     'ideias'      { & $Claude -p "/ideias $Arg" @Perm }
     'post' {
         if (-not $Arg) { throw 'Usage: ./sb.ps1 post "<tema> [x|linkedin|medium]"' }
-        & $Claude -p "/post $Arg" @Perm
+        & $Claude "/post $Arg" @Perm
     }
     'help' {
         Write-Host 'Second Brain commands:'

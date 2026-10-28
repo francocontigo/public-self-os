@@ -18,10 +18,10 @@ Pergunte, **uma por vez**:
 5. Qual é a menor versão que já vale publicar.
 6. Onde vai viver (repositório, artigo, benchmark público).
 
-**Recuse escopo sem uma primeira versão publicável em até quatro semanas** e peça para reduzir, até caber. Crie `areas/projetos/<slug>.md` a partir de `templates/projeto.md` com `status: ideia`, `created` real, `thesis` e `track`, e acrescente a linha na tabela de `areas/projetos/_index.md`. Se veio de `## Candidatos`, remova de lá. Se há trilha, escreva o slug do projeto em `project:` e `## Artefato` da trilha.
+**Recuse escopo sem uma primeira versão publicável em até quatro semanas** e peça para reduzir, até caber. Crie `areas/projetos/<slug>.md` a partir de `templates/projeto.md` com `status: ideia`, `created` real, `thesis` e `track`. Se veio de `## Candidatos`, remova de lá. Se há trilha, escreva o slug do projeto em `project:` e `## Artefato` da trilha.
 
 ## `continuar <slug>`
-Leia o projeto. Pergunte o que foi feito desde a última vez. Se o status era `ideia`, mude para `em-andamento` (e no `_index.md`). Registre em `## Log`:
+Leia o projeto. Pergunte o que foi feito desde a última vez. Se o status era `ideia`, mude para `em-andamento`. Registre em `## Log`:
 ```
 ### YYYY-MM-DD
 Feito: ...
@@ -30,7 +30,7 @@ Próximo passo: ...
 A linha `Próximo passo:` é obrigatória, o script a lê. Aprendizado reutilizável vai como linha em `raw/inbox.md`. Se o usuário pedir ajuda técnica, ajude na sessão, mas não grave código no vault.
 
 ## `publicar <slug>`
-Pergunte URL e o que foi publicado. Atualize `status: publicado`, `published` real, `url`, uma linha em `## Log`, e o `_index.md`. Se há `thesis:`, acrescente em `## Onde foi sustentada` da tese a linha `- YYYY-MM-DD · [[projeto]] · url` e pergunte se a tese pode passar a `sustentada`. Sugira a divulgação com `/post <tema> ` apontando `project:` para ele. Depois, cada menção, uso ou citação externa que o usuário quiser registrar vai em `## Uso e citações` com data e link, sem inventar nada.
+Pergunte URL e o que foi publicado. Atualize `status: publicado`, `published` real, `url`, uma linha em `## Log`. Se há `thesis:`, acrescente em `## Onde foi sustentada` da tese a linha `- YYYY-MM-DD · [[projeto]] · url` e pergunte se a tese pode passar a `sustentada`. Sugira a divulgação com `/post <tema> ` apontando `project:` para ele. Depois, cada menção, uso ou citação externa que o usuário quiser registrar vai em `## Uso e citações` com data e link, sem inventar nada.
 
 ## `listar`
 Imprima a saída de `python scripts/os_status.py` filtrada em `projetos` e `producao_publica` (mês corrente e anterior).

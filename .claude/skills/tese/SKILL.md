@@ -17,10 +17,10 @@ Pergunte, **uma por vez**:
 4. O que o faria mudar de ideia.
 5. Quem no mercado discorda e por quê (pessoas públicas pelo nome e handle, ou posições sem nome).
 
-Crie `areas/teses/<slug>.md` a partir de `templates/tese.md` com `status: rascunho`, `created` e `updated` reais, e acrescente a linha na tabela de `areas/teses/_index.md`. Se o enunciado estava em `## Candidatas` do índice, remova de lá. Uma tese só passa a `sustentada` quando há ao menos uma linha em `## Onde foi sustentada` (feito por `/post publicado` ou `/projeto publicar`).
+Crie `areas/teses/<slug>.md` a partir de `templates/tese.md` com `status: rascunho`, `created` e `updated` reais. Se o enunciado estava em `## Candidatas` do índice, remova de lá. Uma tese só passa a `sustentada` quando há ao menos uma linha em `## Onde foi sustentada` (feito por `/post publicado` ou `/projeto publicar`).
 
 ## `revisar <slug>`
-Leia a tese, as páginas da wiki ligadas a ela e o que entrou em `wiki/log.md` desde a última linha de `## Revisões`. Pergunte se a evidência nova fortalece, enfraquece ou muda a tese. Acrescente `- YYYY-MM-DD · o que mudou` em `## Revisões`, atualize `updated` e, se o status mudar, o `_index.md`. Se a tese caiu, `status: abandonada` com o porquê em `## Revisões`, **sem apagar nada**: mudar de ideia em público com registro é parte do posicionamento.
+Leia a tese, as páginas da wiki ligadas a ela e o que entrou em `wiki/log.md` desde a última linha de `## Revisões`. Pergunte se a evidência nova fortalece, enfraquece ou muda a tese. Acrescente `- YYYY-MM-DD · o que mudou` em `## Revisões`, atualize `updated`. Se a tese caiu, `status: abandonada` com o porquê em `## Revisões`, **sem apagar nada**: mudar de ideia em público com registro é parte do posicionamento.
 
 ## `desafiar <slug>`
 Assuma o melhor argumento contrário e debata com o usuário, **uma rodada por vez**, até no máximo cinco rodadas. Ao final, registre em `## Objeções` as objeções que ficaram sem resposta boa, com a data. Não edite o resto da tese sem o usuário pedir.

@@ -27,5 +27,5 @@ Steps:
 7. **Append one entry to `wiki/log.md`** (run `date +%F` and use the real date; never write `date: unknown`):
    `- [YYYY-MM-DD] ingest — <source> — <pages touched>`.
 
-Do NOT modify the source itself or anything in `raw/` or the legacy `0–3` folders. Ingest one source per run.
+Do NOT modify the source itself or anything in `raw/`. Ingest one source per run.
 At the end, print a short report: pages created, pages updated, contradictions flagged.

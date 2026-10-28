@@ -19,7 +19,7 @@ Interativa, **uma pergunta por vez**:
 Depois:
 - Classifique o escopo: `quick` (menos de 5 h), `standard` (5 a 20 h), `deep` (mais de 20 h).
 - Crie `areas/estudos/trilhas/<slug>.md` a partir de `templates/trilha.md` (`status: ativa`, `scope`, `started` com a data real, `domain` com o nome curto do gap-map, `artifact`, `thesis`, `project`).
-- Se o artefato for projeto, crie também `areas/projetos/<slug>.md` seguindo a lógica de `/projeto novo` (template, `status: ideia`, linha em `_index.md`) e linke os dois arquivos.
+- Se o artefato for projeto, crie também `areas/projetos/<slug>.md` seguindo a lógica de `/projeto novo` (template, `status: ideia`) e linke os dois arquivos.
 - Escreva o slug na coluna Trilha do domínio correspondente em `areas/estudos/gap-map.md`. Se o gap-map estiver vazio, só registre o domínio na trilha e sugira `/diagnostico`.
 - Preencha `## Fontes` com três a seis fontes (livros, papers, cursos, posts), uma linha de justificativa cada. URLs são listadas, nunca ingeridas automaticamente. Sugira qual ingerir primeiro com `/ingest`.
 - Preencha `## Mapa de conceitos` na ordem de estudo, com wikilink quando a página já existe em `wiki/`.

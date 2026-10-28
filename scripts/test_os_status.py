@@ -31,6 +31,9 @@ FILES = {
     "areas/publico/posts/2026-10-21-art.md": (
         "---\ntype: post\nkind: artigo\nstatus: publicado\nplatform: medium\npublished: 2026-09-30\n---\n"
     ),
+    "areas/publico/posts/2026-10-05-sub.md": (
+        "---\ntype: post\nkind: artigo\nstatus: publicado\nplatform: substack\npublished: 2026-10-05\n---\n"
+    ),
     "areas/publico/posts/2026-10-25-d.md": (
         "---\ntype: post\nstatus: rascunho\nplatform: linkedin\ndate: 2026-10-25\n---\n"
     ),
@@ -80,13 +83,14 @@ class OsStatusTest(unittest.TestCase):
         self.assertEqual(r["stuck_box1"], ["a"])
 
     def test_tracks(self):
+        self.assertEqual([t["sessions_7d"] for t in self.s["tracks"] if t["slug"] == "rag"], [2])
         t = {x["slug"]: x for x in self.s["tracks"]}
         self.assertEqual(t["rag"]["last_session"], "2026-10-24")
         self.assertEqual(t["rag"]["next_step"], "montar eval")
         self.assertEqual(t["old"]["status"], "concluida")
 
     def test_posts_teses_projetos(self):
-        self.assertEqual(self.s["posts"]["by_status"], {"publicado": 2, "rascunho": 1})
+        self.assertEqual(self.s["posts"]["by_status"], {"publicado": 3, "rascunho": 1})
         self.assertEqual(self.s["posts"]["open"][0]["platform"], "linkedin")
         self.assertEqual(self.s["teses"]["sustentadas"][0]["cited_by"], 2)
         pj = self.s["projetos"]["em_andamento"][0]
@@ -94,7 +98,7 @@ class OsStatusTest(unittest.TestCase):
 
     def test_producao_publica(self):
         pp = self.s["producao_publica"]
-        self.assertEqual(pp["2026-10"], {"projetos": 1, "artigos": 0, "posts": 1})
+        self.assertEqual(pp["2026-10"], {"projetos": 1, "artigos": 1, "posts": 1})
         self.assertEqual(pp["2026-09"], {"projetos": 0, "artigos": 1, "posts": 0})
 
     def test_journal_inbox(self):

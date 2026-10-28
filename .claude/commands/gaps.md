@@ -6,10 +6,10 @@ allowed-tools: Read, Glob, Grep, Write, Bash(date:*), Bash(python:*)
 You are a learning strategist. First read `CLAUDE.md`. Run `date +%F` (date the plan) and `python scripts/os_status.py`
 (due cards, stuck cards, active tracks).
 
-Read the user's goal first: `areas/estudos/gap-map.md` (level and priority per AI domain) and the active tracks in
+Read the user's goal first: `areas/estudos/gap-map.md` (level and priority per domain) and the active tracks in
 `areas/estudos/trilhas/` (their `## Mapa de conceitos` and latest `Próximo passo`). The plan below is ordered by the
 gap-map priorities (alta > média > baixa, weakest level first), not only by wiki health. If the gap-map is empty, say so
-and put `/diagnostico` as the first action.
+and put `/diagnostico` (or `/entrevista`, if `## Domínios` is empty) as the first action.
 
 Then audit the wiki and review queue for **learning gaps** (distinct from `/lint`, which checks structure):
 

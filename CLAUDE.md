@@ -30,7 +30,7 @@ review/              # LEARNING LAYER — spaced-repetition state
 areas/               # OPERATIONAL LAYER — state, plans, artifacts (Portuguese); see section below
 journal/             # chronology — one note per day, one per week (Portuguese)
 templates/           # Obsidian templates used by the skills (diario, semana, trilha, post, decisao, tese, projeto)
-scripts/             # deterministic helpers — os_status.py prints the system state as JSON
+scripts/             # deterministic helpers — os_status.py (system state as JSON), lint.py (mechanical wiki lint)
 docs/                # specs and design docs for this vault (personal-os-spec.md)
 ```
 
@@ -88,7 +88,7 @@ will publish, work decisions, personal goals, and the chronology of all of it.
 
 Routing rule: a reusable idea, concept or fact goes to the wiki (via raw/inbox.md or /ingest). A plan, a
 status, a decision or an artifact goes to areas/. What happened on a given day goes to journal/. Never
-duplicate; link with [[wikilinks]].
+duplicate; link with `[[wikilinks]]`.
 
 North-star metric: public output that other people use or cite, weighted project > long article > post.
 The weekly review opens with it. Cards reviewed and wiki pages are means, never the score.
@@ -109,7 +109,7 @@ today's date). Skills call it instead of recomputing by reading files.
 - `/ingest <path-or-URL>` — ingest a source; also writes `## Recall` cards and enqueues them.
 - `/process-inbox` — triage `raw/inbox.md` items into the wiki (same recall treatment).
 - `/query <question>` — answer from the wiki, save to `output/`.
-- `/lint` — health check (broken links, orphans, missing citations, contradictions, index gaps).
+- `/lint` — runs `python scripts/lint.py` (broken links, orphans, index gaps, missing sources), then judges contradictions and merges.
 - `/study` — run a spaced-repetition session (interleaved across topics).
 - `/gaps` — learning health check: shallow/stub pages, pages without `## Recall`, frequently-missed cards → study plan.
 - `/explain <concept>` — Feynman mode: user explains, the agent grades and patches gaps, may add recall cards.
@@ -118,10 +118,10 @@ Skills (operational layer, in `.claude/skills/`; interactive ones ask one questi
 - `/entrevista` — first conversation: field, role, work fronts, public goal, goals → writes estrategia.md, voz.md, frentes/, metas.md and the domain list in `areas/estudos/gap-map.md`. Run once, before everything.
 - `/diagnostico` — diagnostic interview over the domains listed in `areas/estudos/gap-map.md` → fills levels and priorities. After /entrevista, then quarterly.
 - `/trilha nova|continuar|listar|fechar` — study tracks in `areas/estudos/trilhas/`: motivation, scope, sources, sessions, output artifact.
-- `/dia` — opens the day: reads state, writes `journal/<today>.md` with a plan of at most three items.
+- `/dia [fechar]` — opens the day (plan of at most three items in `journal/<today>.md`) or closes it (what shipped, what did not, one line for tomorrow).
 - `/semana` — weekly review across all areas → `journal/semanas/<week>.md`; opens with public output, sets next week's focus.
 - `/ideias [n]` — post ideas from theses, projects and recent learning → `areas/publico/ideias.md` backlog.
-- `/post <topic> [x|linkedin|medium] | publicado <slug> <url> | resultado <slug>` — drafts, tracks and closes posts in `areas/publico/posts/`. The agent never publishes.
+- `/post <topic> [x|linkedin|medium|substack] | publicado <slug> <url> | resultado <slug>` — drafts, tracks and closes posts in `areas/publico/posts/`. The agent never publishes.
 - `/decisao <frente>` — records a work decision in `areas/trabalho/frentes/<frente>.md` (LGPD: roles, never personal data).
 - `/brag add|colher|revisar|listar` — brag document in `areas/trabalho/brag.md`: harvests merged PRs and closed issues (`gh`, Linear if connected), writes the review summary to `output/`.
 - `/tese nova|revisar|desafiar|listar` — public positions in `areas/teses/`: argument, evidence, what would change the user's mind.

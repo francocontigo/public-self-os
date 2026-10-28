@@ -17,7 +17,7 @@ help:
 	@echo "  make ingest SRC=\"path-or-URL\"   Ingest one source into the wiki"
 	@echo "  make process-inbox               Triage raw/inbox.md into the wiki"
 	@echo "  make query Q=\"your question\"     Ask the wiki; answer saved to output/"
-	@echo "  make lint                        Health-check the wiki"
+	@echo "  make lint                        Mechanical wiki lint (no LLM); /lint in a session for judgment"
 	@echo "  make capture TEXT=\"a thought\"    Append a line to raw/inbox.md (no LLM)"
 	@echo "  -- learning --"
 	@echo "  make study [N=10]                Spaced-repetition session (interactive)"
@@ -28,10 +28,10 @@ help:
 	@echo "  make entrevista                  First conversation: field, fronts, goals, domains (interactive)"
 	@echo "  make diagnostico                 Diagnostic interview -> areas/estudos/gap-map.md (interactive)"
 	@echo "  make trilha A=\"nova <tema>\"      Study tracks: nova|continuar|listar|fechar (interactive)"
-	@echo "  make dia                         Open the day -> journal/<today>.md (interactive)"
+	@echo "  make dia [A=fechar]              Open or close the day -> journal/<today>.md (interactive)"
 	@echo "  make semana                      Weekly review -> journal/semanas/<week>.md (interactive)"
 	@echo "  make ideias [N=5]                Post ideas -> areas/publico/ideias.md"
-	@echo "  make post A=\"<tema> [x|linkedin|medium]\"  Draft a post -> areas/publico/posts/"
+	@echo "  make post A=\"<tema> [x|linkedin|medium|substack]\"  Draft a post -> areas/publico/posts/"
 	@echo "  make decisao A=\"<frente>\"        Record a work decision (interactive)"
 	@echo "  make brag A=\"colher|add ...\"      Brag document: harvest, add, review (interactive)"
 	@echo "  make tese A=\"nova <enunciado>\"   Theses: nova|revisar|desafiar|listar (interactive)"
@@ -49,7 +49,7 @@ query:
 	$(CLAUDE) -p "/query $(Q)" $(PERM)
 
 lint:
-	$(CLAUDE) -p "/lint" $(PERM)
+	python scripts/lint.py
 
 # Pure-text capture: no LLM, just prepend to the inbox under the header line.
 capture:
@@ -85,7 +85,7 @@ trilha:
 	$(CLAUDE) "/trilha $(A)" $(PERM)
 
 dia:
-	$(CLAUDE) "/dia" $(PERM)
+	$(CLAUDE) "/dia $(A)" $(PERM)
 
 semana:
 	$(CLAUDE) "/semana" $(PERM)
@@ -109,5 +109,5 @@ ideias:
 	$(CLAUDE) -p "/ideias $(N)" $(PERM)
 
 post:
-	@test -n "$(A)" || (echo "Usage: make post A=\"<tema> [x|linkedin|medium]\"" && exit 1)
-	$(CLAUDE) -p "/post $(A)" $(PERM)
+	@test -n "$(A)" || (echo "Usage: make post A=\"<tema> [x|linkedin|medium|substack]\"" && exit 1)
+	$(CLAUDE) "/post $(A)" $(PERM)
